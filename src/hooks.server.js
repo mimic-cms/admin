@@ -6,6 +6,9 @@ export const handle = async ({ event, resolve }) => {
         supabaseUrl: PUBLIC_SUPABASE_URL,
         supabaseKey: PUBLIC_SUPABASE_KEY,
         event,
+        cookieOptions: {
+            domain: PUBLIC_DOMAIN
+        }
     })
 
     /**
