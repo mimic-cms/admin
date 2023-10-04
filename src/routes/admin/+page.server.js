@@ -1,7 +1,11 @@
+import { redirect } from '@sveltejs/kit';
+
 let userId
 
 export async function load({ parent }) {
     const { session } = await parent()
+    if (!session) throw redirect(303, '/auth')
+
     userId = session.user.id
 }
 
