@@ -1,4 +1,6 @@
 <script>
+	import { PUBLIC_BUILDER_URL } from '$env/static/public'
+
 	export let data
 	let { websiteConfig } = data
 </script>
@@ -12,7 +14,7 @@
 				<summary>{config.name}</summary>
 				<ul>
 					<li><a href="https://google.com">Live Site</a></li>
-					<li><a href="https://google.com">Builder</a></li>
+					<li><a href={PUBLIC_BUILDER_URL}>Builder</a></li>
 				</ul>
 			</details>
 		</li>

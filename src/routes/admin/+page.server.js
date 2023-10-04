@@ -1,17 +1,8 @@
-import { redirect } from '@sveltejs/kit';
-import { supabase } from '$lib/supabaseClient'
-
 let userId
 
-// Note: load() blocks page mounting until everything is retrieved. Fetching data in <script> does not block.
-export async function load() {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) throw redirect(303, '/login')
-
+export async function load({ parent }) {
+    const { session } = await parent()
     userId = session.user.id
-    const { data: websiteConfig } = await supabase.from('config').select('*')
-
-    return { websiteConfig }
 }
 
 export const actions = {
